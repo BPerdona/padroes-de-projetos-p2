@@ -16,3 +16,4 @@ O projeto não precisa ter interface gráfica e nem estar todo completo, basta t
 
 ## Ideia do projeto:
 
+Um sistema de gerenciamento de uma padaria, podendo ser possível a criação de funcionários, receitas e da gestão do estoque.
