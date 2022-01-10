@@ -1,6 +1,7 @@
 package main;
 
 import decoratorAndProxy.*;
+import staticFactorySingleton.DataBaseConnection;
 
 public class Main {
 
@@ -73,5 +74,29 @@ public class Main {
         }catch (FuncionarioException ex){
             System.out.println(ex.getMessage());
         }
+
+        //Utilizando o padrão Static factory method e Singleton para buscar, criar e alterar funcioanrios
+        System.out.println("\n\n___Static Factory method e Singleton___");
+
+        //Ideia principal criar um classe para conexão a um banco de dados
+
+        System.out.println("Criando instancias e dando print: ");
+        DataBaseConnection joao = DataBaseConnection.newConnection("MySQL","joao","senhaErrada");
+        System.out.println("URL: "+joao.getUrl()+" | Usuario: "+joao.getUser()+" | Senha: "+joao.getSenha());
+
+        DataBaseConnection joao2 = DataBaseConnection.newSenhaConnection("senhaCerta");
+        System.out.println("URL: "+joao2.getUrl()+" | Usuario: "+joao2.getUser()+" | Senha: "+joao2.getSenha());
+
+        DataBaseConnection maria = DataBaseConnection.newUserConnection("maria", "12345678");
+        System.out.println("URL: "+maria.getUrl()+" | Usuario: "+maria.getUser()+" | Senha: "+maria.getSenha());
+
+        DataBaseConnection maria2 = DataBaseConnection.newUrlConnection("SQLite");
+        System.out.println("URL: "+maria2.getUrl()+" | Usuario: "+maria2.getUser()+" | Senha: "+maria2.getSenha());
+
+        System.out.println("\nObjetos após a ultima conexão:");
+        System.out.println("URL: "+joao.getUrl()+" | Usuario: "+joao.getUser()+" | Senha: "+joao.getSenha());
+        System.out.println("URL: "+joao2.getUrl()+" | Usuario: "+joao2.getUser()+" | Senha: "+joao2.getSenha());
+        System.out.println("URL: "+maria.getUrl()+" | Usuario: "+maria.getUser()+" | Senha: "+maria.getSenha());
+        System.out.println("URL: "+maria2.getUrl()+" | Usuario: "+maria2.getUser()+" | Senha: "+maria2.getSenha());
     }
 }
