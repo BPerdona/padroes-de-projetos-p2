@@ -2,6 +2,7 @@ package main;
 
 import decoratorAndProxy.*;
 import staticFactorySingleton.DataBaseConnection;
+import fluentInterfaces.*;
 
 public class Main {
 
@@ -18,7 +19,7 @@ public class Main {
         Funcionario funcVazio = new Funcionario("", "", 1000.0);
 
         //Sempre utilizando try por estar utilizando "Banco de dados" e para ver se consegue pegar alguma exceção
-        System.out.println("\nAdicionando Pedro:");
+        System.out.println("Adicionando Pedro:");
         try {
             //adicionando pedro
             funcionarioDAO.addFuncionario(pedro);
@@ -27,7 +28,7 @@ public class Main {
             System.out.println(ex.getMessage());
         }
 
-        System.out.println("\nAdicionando Jorge:");
+        System.out.println("Adicionando Jorge:");
         try {
             //adicionando jorge
             funcionarioDAO.addFuncionario(jorge);
@@ -36,7 +37,7 @@ public class Main {
             System.out.println(ex.getMessage());
         }
 
-        System.out.println("\nAdicionando ana e promovendo:");
+        System.out.println("Adicionando ana e promovendo:");
         try {
             //adicionando ana e depois alterando seu salario
             funcionarioDAO.addFuncionario(ana);
@@ -47,7 +48,7 @@ public class Main {
             System.out.println(ex.getMessage());
         }
 
-        System.out.println("\nAdicionando Funcionario Vazio:");
+        System.out.println("Adicionando Funcionario Vazio:");
         try {
             //adicionando funcionario vazio
             funcionarioDAO.addFuncionario(funcVazio);
@@ -56,7 +57,7 @@ public class Main {
             System.out.println(ex.getMessage());
         }
 
-        System.out.println("\nProcurando Funcionario Existente:");
+        System.out.println("Procurando Funcionario Existente:");
         try {
             //Procurando funcionario existente
             Funcionario anaDnv = funcionarioDAO.getFuncionario("Ana");
@@ -66,7 +67,7 @@ public class Main {
             System.out.println(ex.getMessage());
         }
 
-        System.out.println("\nProcurando Funcionario sem nome:");
+        System.out.println("Procurando Funcionario sem nome:");
         try {
             //Procurando funcionario sem nome
             Funcionario semNome = funcionarioDAO.getFuncionario("");
@@ -98,5 +99,18 @@ public class Main {
         System.out.println("URL: "+joao2.getUrl()+" | Usuario: "+joao2.getUser()+" | Senha: "+joao2.getSenha());
         System.out.println("URL: "+maria.getUrl()+" | Usuario: "+maria.getUser()+" | Senha: "+maria.getSenha());
         System.out.println("URL: "+maria2.getUrl()+" | Usuario: "+maria2.getUser()+" | Senha: "+maria2.getSenha());
+
+        //Utilizando o padrão fluent interface para criar ingredientes
+        System.out.println("\n\n___Fluent Interface___");
+        System.out.println("Criando novos ingredientes:");
+
+        Ingrediente farinha = new Ingrediente().named("Farinha").described("Trigo").theAmount(2.0);
+        Ingrediente acucar = new Ingrediente().named("Açucar").described("Refinado").theAmount(1.0);
+        Ingrediente fermento = new Ingrediente().named("Fermento").described("Biologico").theAmount(0.1);
+
+        System.out.println("Nome: "+farinha.getNome()+" | Descrição: "+farinha.getDescricao()+" | Quantidade: "+farinha.getQuantidade());
+        System.out.println("Nome: "+acucar.getNome()+" | Descrição: "+acucar.getDescricao()+" | Quantidade: "+acucar.getQuantidade());
+        System.out.println("Nome: "+fermento.getNome()+" | Descrição: "+fermento.getDescricao()+" | Quantidade: "+fermento.getQuantidade());
+
     }
 }
