@@ -3,6 +3,7 @@ package main;
 import decoratorAndProxy.*;
 import staticFactorySingleton.DataBaseConnection;
 import fluentInterfaces.*;
+import commands.*;
 
 public class Main {
 
@@ -112,5 +113,45 @@ public class Main {
         System.out.println("Nome: "+acucar.getNome()+" | Descrição: "+acucar.getDescricao()+" | Quantidade: "+acucar.getQuantidade());
         System.out.println("Nome: "+fermento.getNome()+" | Descrição: "+fermento.getDescricao()+" | Quantidade: "+fermento.getQuantidade());
 
+        //Utilizando o padrão commands para criar o carrinho de produtos comprados
+        System.out.println("\n\n___Commands___");
+
+        Carrinho c = new Carrinho();
+        ExecutorComands exec = new ExecutorComands();
+
+        ProdutoPronto pao = new ProdutoPronto("Pao", 12.20);
+        ProdutoPronto paoDeQueijo = new ProdutoPronto("Pão de Queijo", 7.50);
+        ProdutoPronto presunto = new ProdutoPronto("Presunto", 16.75);
+        ServicoBolo bolo = new ServicoBolo("Bolo de Morango",32.40,"Recheado com chocolate.",5.0);
+        ServicoBolo bolo2 = new ServicoBolo("Bolo de Fuba",7.90,"Com cobertura de chocolate.",5.0);
+
+        c.setProdutos(exec.adicionar(new InserirProduto(c.getProdutos(), pao)));
+        c.setProdutos(exec.adicionar(new InserirProduto(c.getProdutos(), paoDeQueijo)));
+        c.setProdutos(exec.adicionar(new InserirProduto(c.getProdutos(), presunto)));
+
+
+        //Produtos no carrinho
+        printCarrinho(c);
+        c.setProdutos(exec.desfazer());
+        printCarrinho(c);
+        c.setProdutos(exec.desfazer());
+        printCarrinho(c);
+        c.setProdutos(exec.refazer());
+        printCarrinho(c);
+        c.setProdutos(exec.adicionar(new InserirBolo(c.getProdutos(), bolo)));
+        c.setProdutos(exec.adicionar(new InserirBolo(c.getProdutos(), bolo2)));
+        printCarrinho(c);
+        c.setDesconto(20.0);
+        printCarrinho(c);
+
+
+    }
+
+    //Produtos no carrinho
+    public static void printCarrinho(Carrinho c){
+        for(ProdutoPronto p : c.getProdutos()){
+            System.out.println("Nome: "+p.getNome()+" | Preço: "+p.getPreco());
+        }
+        System.out.println("Preço final: "+c.getPrecoTotal()+"\n");
     }
 }
