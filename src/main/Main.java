@@ -143,8 +143,6 @@ public class Main {
         printCarrinho(c);
         c.setDesconto(20.0);
         printCarrinho(c);
-
-
     }
 
     //Produtos no carrinho
