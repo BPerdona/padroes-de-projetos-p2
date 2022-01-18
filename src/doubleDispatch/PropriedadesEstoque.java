@@ -1,5 +1,5 @@
 package doubleDispatch;
 
 public enum PropriedadesEstoque {
-    PESO, QUANTIDADE, LITROS;
+    PESO, QUANTIDADE, VALIDADE, CUSTOENEGIA, PRECOESTOQUE;
 }
