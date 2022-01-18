@@ -2,18 +2,22 @@ package doubleDispatch;
 
 public abstract class Insumo {
     private String nome;
+    private Double preco;
     private Double peso;
     private int quantidade;
 
-    public Insumo(String nome, Double peso, int quantidade){
+    public Insumo(String nome,Double preco, Double peso, int quantidade){
         super();
         this.nome=nome;
+        this.preco=preco;
         this.peso=peso;
         this.quantidade=quantidade;
     }
 
     public void addPropriedades(Estoque estoque){
-        estoque.addPropriedade(PropriedadesEstoque.QUANTIDADE, peso);
+        estoque.addPropriedade(PropriedadesEstoque.PESO, peso*quantidade);
+        estoque.addPropriedade(PropriedadesEstoque.PRECO, preco*quantidade);
+        estoque.addPropriedade(PropriedadesEstoque.QUANTIDADE, quantidade);
     }
 
     public String getNome() {
@@ -40,7 +44,11 @@ public abstract class Insumo {
         this.quantidade = quantidade;
     }
 
-    public Double getPesoTotal(){
-        return peso*quantidade;
+    public Double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(Double preco) {
+        this.preco = preco;
     }
 }

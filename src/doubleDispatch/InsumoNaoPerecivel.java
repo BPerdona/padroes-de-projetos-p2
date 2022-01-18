@@ -3,8 +3,8 @@ package doubleDispatch;
 public class InsumoNaoPerecivel extends Insumo{
     private Double precoEstoque;
 
-    public InsumoNaoPerecivel(String nome, Double peso, int quantidade, Double pesoLiquido) {
-        super(nome, peso, quantidade);
+    public InsumoNaoPerecivel(String nome, Double preco, Double peso, int quantidade, Double pesoLiquido) {
+        super(nome, preco, peso, quantidade);
         this.precoEstoque = pesoLiquido;
     }
 

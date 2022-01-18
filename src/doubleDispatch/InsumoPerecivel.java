@@ -1,11 +1,11 @@
 package doubleDispatch;
 
 public class InsumoPerecivel extends Insumo{
-    private Double validadeDias;
+    private int validadeDias;
     private Double custoEnergia;
 
-    public InsumoPerecivel(String nome, Double peso, Double validadeDias, int quantidade, Double precoEnergia) {
-        super(nome, peso, quantidade);
+    public InsumoPerecivel(String nome,Double preco, Double peso, int validadeDias, int quantidade, Double precoEnergia) {
+        super(nome,preco , peso, quantidade);
         this.validadeDias = validadeDias;
         this.custoEnergia = precoEnergia;
     }
@@ -16,11 +16,11 @@ public class InsumoPerecivel extends Insumo{
         estoque.addPropriedade(PropriedadesEstoque.CUSTOENEGIA, custoEnergia);
     }
 
-    public Double getValidadeDias() {
+    public int getValidadeDias() {
         return validadeDias;
     }
 
-    public void setValidadeDias(Double validadeDias) {
+    public void setValidadeDias(int validadeDias) {
         this.validadeDias = validadeDias;
     }
 

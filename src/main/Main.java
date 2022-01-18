@@ -4,6 +4,7 @@ import decoratorAndProxy.*;
 import staticFactorySingleton.DataBaseConnection;
 import fluentInterfaces.*;
 import commands.*;
+import doubleDispatch.*;
 
 public class Main {
 
@@ -143,6 +144,36 @@ public class Main {
         printCarrinho(c);
         c.setDesconto(20.0);
         printCarrinho(c);
+
+        //Utilizando o padrão Double Dispatch para fazer o estoque da padaria, podendo adicionar qualquer tipo de objeto desde que seja da mesma abstração
+        System.out.println("\n\n___Double Dispatch___");
+
+        //Criando Insumos
+        InsumoPerecivel morango = new InsumoPerecivel("Morango", 4.50, 0.1, 7, 2, 2.20);
+        InsumoPerecivel leite = new InsumoPerecivel("Leite", 2.99, 2.0, 10, 12, 27.90);
+        InsumoNaoPerecivel trigo = new InsumoNaoPerecivel("Trigo", 7.20,9.5, 20, 10.0);
+        InsumoNaoPerecivel  sal = new InsumoNaoPerecivel("Sal", 1.80,1.1, 5, 1.0);
+
+        //Criando estoque
+        Estoque est = new Estoque();
+
+        //Adicionando insumos no estoque
+        est.addInsumo(morango);
+        est.addInsumo(leite);
+        est.addInsumo(trigo);
+        est.addInsumo(sal);
+
+        //Mostrando o estoque
+        System.out.println("Insumos no estoque:");
+        for(Insumo insumo:est.getInsumos()){
+            System.out.println("\nNome: "+insumo.getNome());
+            System.out.println("Preço: "+insumo.getPreco());
+            System.out.println("Peso: "+insumo.getPeso());
+            System.out.println("Quantidade: "+insumo.getQuantidade());
+        }
+        System.out.println("______________________________________");
+        System.out.println("\nPreço total do estoque: "+est.getPrecoTotal());
+        System.out.println("Peso total do estoque: "+est.getPesoTotal());
     }
 
     //Produtos no carrinho

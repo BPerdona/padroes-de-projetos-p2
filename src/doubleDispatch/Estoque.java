@@ -14,8 +14,8 @@ public class Estoque {
         insumo.addPropriedades(this);
     }
 
-    public void addPropriedade(PropriedadesEstoque tipo, double peso){
-        getPropriedades().put(tipo, getPropriedades().get(tipo)+peso);
+    public void addPropriedade(PropriedadesEstoque tipo, double valor){
+        getPropriedades().put(tipo, getPropriedades().get(tipo) + valor);
     }
 
     public double getPesoTotal(){
@@ -25,6 +25,15 @@ public class Estoque {
         double pesoTotal = 0.0;
         pesoTotal += getPropriedades().get(PropriedadesEstoque.PESO);
         return pesoTotal;
+    }
+
+    public double getPrecoTotal(){
+        if(insumos.isEmpty()){
+            return 0.0;
+        }
+        double precoTotal = 0.0;
+        precoTotal += getPropriedades().get(PropriedadesEstoque.PRECO);
+        return precoTotal;
     }
 
     public List<Insumo> getInsumos() {
