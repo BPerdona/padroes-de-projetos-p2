@@ -6,6 +6,7 @@ import fluentInterfaces.*;
 import commands.*;
 import doubleDispatch.*;
 import facade.ControladorMaquina;
+import flyweight.*;
 
 public class Main {
 
@@ -203,6 +204,12 @@ public class Main {
         control.pausarFreezer();
         control.finalizarFreezer();
 
+
+        //Utilizando o padrão FlyWeight para
+        System.out.println("\n\n___Fly Weight___");
+
+        Receita boloMorango = new Receita();
+        boloMorango.add(IngredienteFactory.get("trigo"));
     }
 
     //Produtos no carrinho
