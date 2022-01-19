@@ -208,8 +208,16 @@ public class Main {
         //Utilizando o padrão FlyWeight para
         System.out.println("\n\n___Fly Weight___");
 
-        Receita boloMorango = new Receita();
+        //Criando receita
+        Receita boloMorango = new Receita("Bolo de morango");
         boloMorango.add(IngredienteFactory.get("trigo"));
+        boloMorango.add(IngredienteFactory.get("ovo"));
+        boloMorango.add(IngredienteFactory.get("acucar"));
+        boloMorango.add(IngredienteFactory.get("morango"));
+
+        //Mostrando a receita
+        System.out.println("\nReceita: "+boloMorango.getNomeReceita());
+        System.out.println(boloMorango.get());
     }
 
     //Produtos no carrinho

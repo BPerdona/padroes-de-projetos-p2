@@ -10,6 +10,6 @@ public class SingleIngrediente implements MyIngrediente{
     }
 
     public String get(){
-        return "Nome: "+nome+" Quantidade: "+quantidade;
+        return "Ingrediente: "+nome+" | Quantidade: "+quantidade;
     }
 }

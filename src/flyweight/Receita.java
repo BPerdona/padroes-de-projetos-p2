@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Receita implements MyIngrediente{
+    private String nomeReceita;
     private List<MyIngrediente> ingredientes;
 
-    public Receita(){
+    public Receita(String nomeReceita){
+        this.nomeReceita=nomeReceita;
         this.ingredientes = new ArrayList<MyIngrediente>();
     }
 
@@ -17,8 +19,16 @@ public class Receita implements MyIngrediente{
     public String get(){
        String result = new String();
        for(MyIngrediente ing:ingredientes){
-           result = result.concat("\n"+ing.get());
+           result = result.concat(ing.get()+"\n");
        }
        return result;
+    }
+
+    public String getNomeReceita() {
+        return nomeReceita;
+    }
+
+    public void setNomeReceita(String nomeReceita) {
+        this.nomeReceita = nomeReceita;
     }
 }
