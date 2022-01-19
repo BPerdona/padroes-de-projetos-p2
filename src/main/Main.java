@@ -5,6 +5,7 @@ import staticFactorySingleton.DataBaseConnection;
 import fluentInterfaces.*;
 import commands.*;
 import doubleDispatch.*;
+import facade.ControladorMaquina;
 
 public class Main {
 
@@ -174,6 +175,34 @@ public class Main {
         System.out.println("______________________________________");
         System.out.println("\nPreço total do estoque: "+est.getPrecoTotal());
         System.out.println("Peso total do estoque: "+est.getPesoTotal());
+
+        //Utilizando o padrão Facade para gerenciar as maquinas
+        System.out.println("\n\n___Facade___");
+
+        //Criando o objeto que sera a fachada
+        ControladorMaquina control = new ControladorMaquina();
+
+        //Utilizando Forno
+        System.out.println("\n>>Forno<<");
+        control.iniciarForno(500.0);
+        control.mudarTemperaturaForno(400.0);
+        control.pausarForno();
+        control.finalizarForno();
+
+        //Utilizando Batedeira
+        System.out.println("\n>>Batedeira<<");
+        control.iniciarbatedeira(2.0);
+        control.mudarVelocidadeBatedeira(3.0);
+        control.pausarBatedeira();
+        control.finalizarBatedeira();
+
+        //Utilizando Freezer
+        System.out.println("\n>>Freezer<<");
+        control.iniciarFrezeer(-19.0);
+        control.mudarTemperaturaFreezer(-30);
+        control.pausarFreezer();
+        control.finalizarFreezer();
+
     }
 
     //Produtos no carrinho
