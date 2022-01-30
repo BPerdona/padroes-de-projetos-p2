@@ -15,7 +15,7 @@ public class Main {
         //Utilizando o padrão Prox e Decorator para buscar, criar e alterar funcioanrios
         System.out.println("___Prox and Decorator___");
 
-        FuncionarioDAOInterface  funcionarioDAO= new FuncionarioDAODecorator();
+        FuncionarioDAOInterface  funcionarioDAO = new FuncionarioDAODecorator();
 
         Funcionario pedro = new Funcionario("Pedro", "Padeiro", 1700.0);
         Funcionario ana = new Funcionario("Ana", "Atendente", 1200.0);

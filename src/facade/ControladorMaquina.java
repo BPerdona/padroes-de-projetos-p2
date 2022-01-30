@@ -30,6 +30,7 @@ public class ControladorMaquina {
     public void pausarBatedeira(){
         batedeira.pausar();
     }
+
     public void pausarFreezer(){
         freezer.pausar();
     }

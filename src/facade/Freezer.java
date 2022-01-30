@@ -1,7 +1,5 @@
 package facade;
 
-import javax.crypto.spec.PSource;
-
 public class Freezer implements Maquina {
     private int id;
     private Double temperatura;

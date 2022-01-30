@@ -24,7 +24,7 @@ public class DataBaseConnection {
         this.senha = "SenhaPadrão";
     }
 
-    //Por sem uma conexão necessitaria criar um metodo que retornaria uma conexão com base na instancia da classe
+    //Por sem uma conexão seria necessario criar um metodo que retornaria uma conexão com base na instancia da classe
     //Mas por conta de ser apenas um exemplo não implementei o metodo
 
     public static DataBaseConnection newConnection(String url, String user, String senha){
